@@ -53,10 +53,12 @@ fetch('/api/productos')
     document.getElementById('buscar').addEventListener('input', e => pintar(e.target.value));
 
     // BUG INTENCIONAL: la función "reiniciarContador" no existe
-    document.getElementById('vaciar').addEventListener('click', () => {
-      carrito = 0;
-      reiniciarContador();
-    });
+    
+document.getElementById('vaciar').addEventListener('click', () => {
+  carrito = 0;
+  contador.textContent = carrito;
+});
+
   </script>
   </main>
 </body>
