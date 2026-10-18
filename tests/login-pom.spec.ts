@@ -8,9 +8,19 @@ test('login correcto usando Page Object', async ({ page }) => {
   await expect(page).toHaveURL(/catalogo\.html/);
 });
 
+
 test('login incorrecto usando Page Object', async ({ page }) => {
   const login = new LoginPage(page);
+
   await login.abrir();
   await login.iniciarSesion('alumno', 'otra');
+
   await login.esperarError('Usuario o contraseña incorrectos');
+
+  await expect(page.getByRole('alert')).toHaveText(
+    'Usuario o contraseña incorrectos'
+  );
+
+  await expect(page).toHaveURL(/login\.html/);
 });
+

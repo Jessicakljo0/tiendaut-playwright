@@ -15,9 +15,10 @@ jobs:
         node-version: lts/*
     - name: Install dependencies
       run: npm ci
+
     - name: Lint (análisis estático de las pruebas)
-      # se excluye el laboratorio de errores, que tiene un await olvidado a propósito (E7)
-      run: npx eslint tests/ --ignore-pattern "tests/errores-intencionales.spec.ts"
+      run: npm run lint
+
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
